@@ -4,7 +4,7 @@ import pandas as pd
 from openai import OpenAI
 import streamlit as st
 
-
+print('tete')
 st.title("챗봇과 대화를 해보세요.")
 
 openai_api_key = st.text_input("Enter your OpenAI API key")
