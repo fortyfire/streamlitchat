@@ -5,17 +5,6 @@ from openai import OpenAI
 import streamlit as st
 
 
-# Read the dataset
-df = pd.read_csv("InkjetDB_preprocessing.csv")
-
-# Display the dataframe
-st.write(df)
-##################################################################################################################
-
-
-# 챗봇 가져오기
-
-
 st.title("챗봇과 대화를 해보세요.")
 
 openai_api_key = st.text_input("Enter your OpenAI API key")
@@ -49,15 +38,3 @@ if prompt := st.chat_input("What is up?"):
         response = st.write_stream(stream)
     st.session_state.messages.append({"role": "assistant", "content": response})
     
-#####################################################################################################################
-
-# 달력창이 뜨는 수정가능한 테이블 삽입
-from datetime import date
-df = pd.read_csv("avocado.csv")
-df['date'] = df['date'].apply(lambda x: date.fromisoformat(x))
-
-new_df = st.data_editor(df, column_config={"date": st.column_config.DateColumn} )
-
-
-# 메트릭 제작
-st.metric(label="Temperature", value="70 °F", delta="1.2 °F")
